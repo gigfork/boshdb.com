@@ -6,6 +6,7 @@
     <th>Description</th>
     <th>Source</th>
     <th>Download</th>
+    <th>User</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,6 +18,7 @@
     <td><%= release.description %></td>
     <td><%= release.source %></td>
     <td><%= release.download %></td>
+    <td><%= release.user_id %></td>
     <td><%= link_to 'Show', release %></td>
     <td><%= link_to 'Edit', edit_release_path(release) %></td>
     <td><%= link_to 'Destroy', release, confirm: 'Are you sure?', method: :delete %></td>

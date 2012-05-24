@@ -5,6 +5,7 @@ class CreateReleases < ActiveRecord::Migration
       t.text :description
       t.string :source
       t.string :download
+      t.integer :user_id
 
       t.timestamps
     end
