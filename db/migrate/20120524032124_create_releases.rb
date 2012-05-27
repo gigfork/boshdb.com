@@ -6,6 +6,7 @@ class CreateReleases < ActiveRecord::Migration
       t.string :source
       t.string :download
       t.integer :user_id
+      t.float :rating, :default => 0.0
 
       t.timestamps
     end
