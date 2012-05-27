@@ -16,12 +16,13 @@ ActiveRecord::Schema.define(:version => 20120524032124) do
   create_table "releases", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.string   "source"
-    t.string   "download"
+    t.string   "source_url"
+    t.string   "download_url"
     t.integer  "user_id"
-    t.float    "rating",      :default => 0.0
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.float    "rating",       :default => 0.0
+    t.integer  "downloads",    :default => 0
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "users", :force => true do |t|

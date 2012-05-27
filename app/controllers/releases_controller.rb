@@ -1,4 +1,7 @@
 class ReleasesController < ApplicationController
+  
+  before_filter :authenticate_user!, :except => [:show, :index]
+  
   # GET /releases
   # GET /releases.json
   def index
@@ -41,6 +44,7 @@ class ReleasesController < ApplicationController
   # POST /releases.json
   def create
     @release = Release.new(params[:release])
+    @release.user = current_user
 
     respond_to do |format|
       if @release.save

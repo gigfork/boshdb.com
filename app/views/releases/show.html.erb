@@ -11,20 +11,14 @@
 </p>
 
 <p>
-  <b>Source:</b>
-  <%= @release.source %>
+  <b>Source URL:</b>
+  <%= @release.source_url %>
 </p>
 
 <p>
-  <b>Download:</b>
-  <%= @release.download %>
+  <b>Download URL:</b>
+  <%= @release.download_url %>
 </p>
-
-<p>
-  <b>User:</b>
-  <%= @release.user_id %>
-</p>
-
 
 <%= link_to 'Edit', edit_release_path(@release) %> |
 <%= link_to 'Back', releases_path %>
