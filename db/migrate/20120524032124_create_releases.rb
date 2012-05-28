@@ -4,7 +4,6 @@ class CreateReleases < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.string :source_url
-      t.string :download_url
       t.integer :user_id
       t.float :rating, :default => 0.0
       t.integer :downloads, :default => 0

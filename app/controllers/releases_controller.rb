@@ -43,8 +43,19 @@ class ReleasesController < ApplicationController
   # POST /releases
   # POST /releases.json
   def create
-    @release = Release.new(params[:release])
+    # Extract the version info
+    release = params[:release]
+    version = params[:release][:version]
+    release.delete("version")
+    
+    @release = Release.new(release)
     @release.user = current_user
+    
+    # Add the version info
+    @version = Version.new(version)
+    @version.version_number = 1
+    @version.release = @release
+    @release.versions << @version
 
     respond_to do |format|
       if @release.save
