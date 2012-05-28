@@ -5,7 +5,6 @@
     <th>Name</th>
     <!-- <th>Description</th> -->
     <!--<th>Source</th>-->
-    <th>Download URL</th>
 	<th>Rating</th>
 	<th>Downloads
     <th>User</th>
@@ -19,7 +18,6 @@
     <td><%= release.name %></td>
     <!--<td><%= release.description %></td>-->
     <!--<td><%= release.source_url %></td>-->
-    <td><%= link_to "Download", release.download_url %></td>
     <td><%= release.rating %>
 	<td><%= release.downloads %>
 	<td><%= release.user.username if release.user %></td>

@@ -15,5 +15,12 @@
   <%= @release.source_url %>
 </p>
 
+<p>
+  <b>Versions: </b>
+  <% @release.versions.each do |version| %>
+	<%= link_to version.version_number, version.download_url %>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_release_path(@release) %> |
 <%= link_to 'Back', releases_path %>
