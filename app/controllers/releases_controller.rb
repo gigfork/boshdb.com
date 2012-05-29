@@ -48,6 +48,9 @@ class ReleasesController < ApplicationController
     version = params[:release][:version]
     release.delete("version")
     
+    # Add http:// prefix to source_url if it doesn't already exist
+    release[:source_url] = "http://#{release[:source_url]}" if not  release[:source_url].starts_with? "http://" and not release[:source_url].starts_with? "https://"
+    
     @release = Release.new(release)
     @release.user = current_user
     
