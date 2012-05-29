@@ -52,6 +52,9 @@ class ReleasesController < ApplicationController
     @release.user = current_user
     
     # Add the version info
+    # If the URL doesn't start with http:// or https://, add it
+    version[:download_url] = "http://#{version[:download_url]}" if not  version[:download_url].starts_with? "http://" and not version[:download_url].starts_with? "https://"
+    
     @version = Version.new(version)
     @version.version_number = 1
     @version.release = @release
