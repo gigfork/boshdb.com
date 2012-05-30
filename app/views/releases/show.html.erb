@@ -12,13 +12,13 @@
 
 <p>
   <b>Source URL:</b>
-  <%= link_to @release.source_url, @release.source_url %>
+  <a href="<%= @release.source_url %>" target="_blank"><%= @release.source_url %></a>
 </p>
 
 <p>
   <b>Versions: </b>
   <% @release.versions.each do |version| %>
-	<%= link_to version.version_number, version.download_url %>
+	<a href="<%= version.download_url %>" target="_blank"><%= version.version_number %></a>
   <% end %>
 </p>
 

@@ -15,7 +15,7 @@
 
 <% @releases.each do |release| %>
   <tr>
-    <td><%= release.name %></td>
+    <td><%= link_to release.name, release %></td>
     <!--<td><%= release.description %></td>-->
     <!--<td><%= release.source_url %></td>-->
     <td><%= release.rating %>
