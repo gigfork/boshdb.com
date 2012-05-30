@@ -1,4 +1,7 @@
 Boshdb::Application.routes.draw do
+  
+  match '/releases/:release_id/version/:version_number/download' => 'version#download'
+  
   resources :releases
 
   devise_for :users
