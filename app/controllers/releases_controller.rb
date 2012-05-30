@@ -1,6 +1,6 @@
 class ReleasesController < ApplicationController
   
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :authenticate_user!, :except => [:show, :index, :download]
   
   # GET /releases
   # GET /releases.json
@@ -94,11 +94,19 @@ class ReleasesController < ApplicationController
   # DELETE /releases/1.json
   def destroy
     @release = Release.find(params[:id])
-    @release.destroy
-
-    respond_to do |format|
-      format.html { redirect_to releases_url }
-      format.json { head :no_content }
-    end
+    
+    if current_user.id == @release.user.id
+      @release.destroy
+      respond_to do |format|
+        format.html { redirect_to "/releases" }
+        format.json { head :no_content }
+      end
+    else
+      # Do not have permission to delete this release
+      respond_to do |format|
+        format.html { redirect_to @release, notice: 'You do not have permission to delete this release'}
+        format.json { head :no_content }
+      end
+    end    
   end
 end
