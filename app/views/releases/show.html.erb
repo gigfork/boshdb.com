@@ -18,6 +18,6 @@
 <p>
   <b>Versions: </b>
   <% @release.versions.each do |version| %>
-	<a href="<%= version.download_url %>" target="_blank"><%= version.version_number %></a>
+	<a href="/releases/<%= @release.id %>/version/<%= version.version_number %>/download" target="_blank"><%= version.version_number %></a>
   <% end %>
 </p>
