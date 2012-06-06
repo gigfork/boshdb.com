@@ -6,6 +6,7 @@
 	<th>Rating</th>
 	<th>Downloads
     <th>User</th>
+	<th>Latest Version</th>
   </tr>
 
 <% @releases.each do |release| %>
@@ -14,6 +15,7 @@
     <td><%= release.rating %>
 	<td><%= release.versions.last.downloads %>
 	<td><%= release.user.username if release.user %></td>
+	<td><a href="/releases/<%= release.id %>/version/<%= release.versions.last.id %>/download">v<%= release.versions.last.id %> - Download</a></td>
   </tr>
 <% end %>
 </table>
