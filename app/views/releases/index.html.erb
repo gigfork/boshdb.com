@@ -3,31 +3,21 @@
 <table class="table-striped">
   <tr>
     <th>Name</th>
-    <!-- <th>Description</th> -->
-    <!--<th>Source</th>-->
 	<th>Rating</th>
 	<th>Downloads
     <th>User</th>
-    <!--<th></th>
-    <th></th>
-    <th></th>-->
   </tr>
 
 <% @releases.each do |release| %>
   <tr>
     <td><%= link_to release.name, release %></td>
-    <!--<td><%= release.description %></td>-->
-    <!--<td><%= release.source_url %></td>-->
     <td><%= release.rating %>
 	<td><%= release.downloads %>
 	<td><%= release.user.username if release.user %></td>
-    <!--<td><%= link_to 'Show', release %></td>
-    <td><%= link_to 'Edit', edit_release_path(release) %></td>
-    <td><%= link_to 'Destroy', release, confirm: 'Are you sure?', method: :delete %></td>-->
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Release', new_release_path %>
+<%= link_to 'New Release', new_release_path, :class => "btn" %>
