@@ -1,6 +1,6 @@
-<h1>Listing releases</h1>
-
-<table class="table-striped">
+<h1>BOSH Release Index</h1>
+<br />
+<table class="table table-bordered table-striped">
   <tr>
     <th>Name</th>
 	<th>Rating</th>
@@ -12,7 +12,7 @@
   <tr>
     <td><%= link_to release.name, release %></td>
     <td><%= release.rating %>
-	<td><%= release.downloads %>
+	<td><%= release.versions.last.downloads %>
 	<td><%= release.user.username if release.user %></td>
   </tr>
 <% end %>
