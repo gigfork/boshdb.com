@@ -22,13 +22,13 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :source_url %><br />
+    <%= f.label :source_url, "Source URL" %><br />
     <%= f.text_field :source_url %>
   </div>
 
   <%= f.fields_for :version do |v_form| %>
 	  <div class="field">
-	    <%= v_form.label :download_url %><br />
+	    <%= v_form.label :download_url, "Download URL" %><br />
 	    <%= v_form.text_field :download_url %>
 	  </div>
   <% end %>
