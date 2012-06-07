@@ -15,7 +15,7 @@
     <td><%= release.rating %>
 	<td><%= release.versions.last.downloads %>
 	<td><%= release.user.username if release.user %></td>
-	<td><button class="btn btn-primary" href="/releases/<%= release.id %>/version/<%= release.versions.last.id %>/download">v<%= release.versions.last.version_number %> - Download</button></td>
+	<td><a class="btn btn-primary" href="/releases/<%= release.id %>/version/<%= release.versions.last.id %>/download">v<%= release.versions.last.version_number %> - Download</a></td>
   </tr>
 <% end %>
 </table>
