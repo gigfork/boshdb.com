@@ -26,12 +26,15 @@ class VersionsController < ApplicationController
     # Clean up the data
     download_url = "http://#{download_url}" if not download_url.starts_with? "http://" and not download_url.starts_with? "https://"
     
-    @version = Version.new
-    @version.release_id = release_id
-    @version.version_number = version_number
-    @version.download_url = download_url
-    @version.downloads = 0
-    @version.save
+    # Make sure that the currently logged in user is the one adding the version
+    if user_signed_in? && current_user.id == @release.user.id
+      @version = Version.new
+      @version.release_id = release_id
+      @version.version_number = version_number
+      @version.download_url = download_url
+      @version.downloads = 0
+      @version.save
+    end
     
     redirect_to @release
   end

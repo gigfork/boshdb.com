@@ -18,10 +18,11 @@ ActiveRecord::Schema.define(:version => 20120528141601) do
     t.text     "description"
     t.string   "source_url"
     t.integer  "user_id"
-    t.float    "rating",      :default => 0.0
+    t.integer  "score",       :default => 0
+    t.integer  "votes",       :default => 0
     t.integer  "downloads",   :default => 0
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "users", :force => true do |t|
