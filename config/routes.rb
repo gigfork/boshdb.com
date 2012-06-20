@@ -1,5 +1,8 @@
 Boshdb::Application.routes.draw do
   
+  # Static Pages
+  match "/release-tutorial" => "pages#release_tutorial", :via => "get"
+  
   # Versions routes
   match "/versions" => "versions#create", :via => "post"
   
