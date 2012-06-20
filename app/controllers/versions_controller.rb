@@ -15,8 +15,6 @@ class VersionsController < ApplicationController
   
   # POST /versions
   def create
-    puts params.inspect
-    
     # Extract the parameters
     download_url = params[:version][:download_url]
     release_id = params[:release][:id]
