@@ -7,6 +7,8 @@ Boshdb::Application.routes.draw do
   
   resources :releases
 
+  match "/comments" => "comments#create", :via => "post"
+
   devise_for :users
   
   root :to => "releases#index"

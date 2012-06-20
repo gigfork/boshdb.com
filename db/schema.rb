@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120528141601) do
+ActiveRecord::Schema.define(:version => 20120620000112) do
+
+  create_table "comments", :force => true do |t|
+    t.integer  "release_id"
+    t.integer  "user_id"
+    t.text     "comment"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "releases", :force => true do |t|
     t.string   "name"

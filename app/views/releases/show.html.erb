@@ -1,64 +1,103 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="span8">
+		<p>
+		  <b>Name:</b>
+		  <%= @release.name %>
+		</p>
 
-<p>
-  <b>Name:</b>
-  <%= @release.name %>
-</p>
+		<p>
+			<b>Published By:</b>
+			<%= @release.user.username %>
+		</p>
 
-<p>
-	<b>Published By:</b>
-	<%= @release.user.username %>
-</p>
+		<p>
+		  <b>Description:</b>
+		  <%= @release.description %>
+		</p>
 
-<p>
-  <b>Description:</b>
-  <%= @release.description %>
-</p>
+		<p>
+		  <b>Source URL:</b>
+		  <a href="<%= @release.source_url %>" target="_blank"><%= @release.source_url %></a>
+		</p>
 
-<p>
-  <b>Source URL:</b>
-  <a href="<%= @release.source_url %>" target="_blank"><%= @release.source_url %></a>
-</p>
+		<p>
+		  <b>Versions: </b>
+		  <% @release.versions.each do |version| %>
+			<a href="/releases/<%= @release.id %>/version/<%= version.version_number %>/download" target="_blank"><%= version.version_number %></a>
+		  <% end %>
+		</p>
 
-<p>
-  <b>Versions: </b>
-  <% @release.versions.each do |version| %>
-	<a href="/releases/<%= @release.id %>/version/<%= version.version_number %>/download" target="_blank"><%= version.version_number %></a>
-  <% end %>
-</p>
-
-<% if user_signed_in? && current_user.id == @release.user.id %>
-	<a class="btn" data-toggle="modal" href="#newVersionModal" >New Version</a>
-<% end %>
-
-
-
-<div class="modal hide" id="newVersionModal">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal">×</button>
-    <h3>New Version of <%= @release.name %></h3>
-  </div>
-  <div class="modal-body">
-    <p>
-	  <%= form_tag("/versions", :method => "post", :id => "version_form") do %>
-		<%= label_tag(:version, "Version Number: " + (@release.versions.last.version_number + 1).to_s) %>
-		<%= hidden_field(:version, :version_number, :value => (@release.versions.last.version_number + 1).to_s)%>
-		<%= hidden_field(:release, :id, :value => @release.id.to_s)%>
-		<br />
-		<%= label_tag(:version, "Download URL: ") %>
-		<%= text_field(:version, :download_url) %>
-	  <% end %>
-    </p>
-  </div>
-  <div class="modal-footer">
-    <a href="#" class="btn" data-dismiss="modal">Close</a>
-    <a id="version_submit" href="#" class="btn btn-primary">Save changes</a>
-  </div>
+		<%# New Version Modal %>
+		<% if user_signed_in? && current_user.id == @release.user.id %>
+			<a class="btn" data-toggle="modal" href="#newVersionModal" >New Version</a>
+	
+			<div class="modal hide" id="newVersionModal">
+			  <div class="modal-header">
+			    <button type="button" class="close" data-dismiss="modal">×</button>
+			    <h3>New Version of <%= @release.name %></h3>
+			  </div>
+			  <div class="modal-body">
+			    <p>
+				  <%= form_tag("/versions", :method => "post", :id => "version_form") do %>
+					<%= label_tag(:version, "Version Number: " + (@release.versions.last.version_number + 1).to_s) %>
+					<%= hidden_field(:version, :version_number, :value => (@release.versions.last.version_number + 1).to_s)%>
+					<%= hidden_field(:release, :id, :value => @release.id.to_s)%>
+					<br />
+					<%= label_tag(:version, "Download URL: ") %>
+					<%= text_field(:version, :download_url) %>
+				  <% end %>
+			    </p>
+			  </div>
+			  <div class="modal-footer">
+			    <a href="#" class="btn" data-dismiss="modal">Close</a>
+			    <a id="version_submit" href="#" class="btn btn-primary">Create Version</a>
+			  </div>
+			</div>
+		<% end %>
+	</div>
+	<div class="span4">
+		<%# New Comment Modal %>
+		<% if user_signed_in? %>
+			<a class="btn" data-toggle="modal" href="#newCommentModal" >New Comment</a>
+	
+			<div class="modal hide" id="newCommentModal">
+			  <div class="modal-header">
+			    <button type="button" class="close" data-dismiss="modal">×</button>
+			    <h3>New Version of <%= @release.name %></h3>
+			  </div>
+			  <div class="modal-body">
+			    <p>
+				  <%= form_tag("/comments", :method => "post", :id => "comments_form") do %>
+					<%= hidden_field(:release, :id, :value => @release.id.to_s)%>
+					<%= label_tag(:comment, "Comment: ") %>
+					<%= text_area(:comment, :comment) %>
+				  <% end %>
+			    </p>
+			  </div>
+			  <div class="modal-footer">
+			    <a href="#" class="btn" data-dismiss="modal">Close</a>
+			    <a id="comments_submit" href="#" class="btn btn-primary">Post Comment</a>
+			  </div>
+			</div>
+		<% end %>
+		<br /><br />
+		<% @release.comments.each do |comment| %>
+			<b><%= comment.user.username %></b><br />
+			<div style="padding-left:20px"><%= comment.comment %></div><br /><br />
+		<% end %>
+	</div>
 </div>
+
 
 <script>
   $('#version_submit').on('click', function(e){
     e.preventDefault();
     $('#version_form').submit();
+  });
+
+  $('#comments_submit').on('click', function(e){
+    e.preventDefault();
+    $('#comments_form').submit();
   });
 </script>
