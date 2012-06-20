@@ -1,32 +1,34 @@
-<h1>BOSH Release Index</h1>
-<br />
-<table class="table table-bordered table-striped">
-  <tr>
-    <th>Name</th>
-	<th>Rating</th>
-	<th>Downloads
-    <th>User</th>
-	<th>Latest Version</th>
-  </tr>
+<div class="hero-unit">
+	<h2>BOSH Release Index</h2>
+	<br />
+	<table class="table table-bordered table-striped">
+	  <tr>
+	    <th>Name</th>
+		<th>Rating</th>
+		<th>Downloads
+	    <th>User</th>
+		<th>Latest Version</th>
+	  </tr>
 
-<% @releases.each do |release| %>
-  <tr>
-    <td><%= link_to release.name, release %></td>
-    <td><%= if release.votes > 0 
-				release.score.to_f / release.votes.to_f
-			else 
-				0 
-			end %>
-	<td><%= release.versions.last.downloads %>
-	<td><%= release.user.username if release.user %></td>
-	<td><a class="btn btn-primary" style="color:white;" href="/releases/<%= release.id %>/version/<%= release.versions.last.version_number %>/download">v<%= release.versions.last.version_number %> - Download</a></td>
-  </tr>
-<% end %>
-</table>
+	<% @releases.each do |release| %>
+	  <tr>
+	    <td><%= link_to release.name, release %></td>
+	    <td><%= if release.votes > 0 
+					release.score.to_f / release.votes.to_f
+				else 
+					0 
+				end %>
+		<td><%= release.versions.last.downloads %>
+		<td><%= release.user.username if release.user %></td>
+		<td><a class="btn btn-primary" style="color:white;" href="/releases/<%= release.id %>/version/<%= release.versions.last.version_number %>/download">v<%= release.versions.last.version_number %> - Download</a></td>
+	  </tr>
+	<% end %>
+	</table>
 
-<br />
+	<br />
 
-<% if user_signed_in? %>
-	<%= link_to 'New Release', new_release_path, :class => "btn" %>
-<% end %>
+	<% if user_signed_in? %>
+		<%= link_to 'New Release', new_release_path, :class => "btn" %>
+	<% end %>
+</div>
 
