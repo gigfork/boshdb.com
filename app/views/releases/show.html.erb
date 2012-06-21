@@ -14,11 +14,6 @@
 			</p>
 
 			<p>
-			  <b>Description:</b>
-			  <%= @release.description %>
-			</p>
-
-			<p>
 			  <b>Source URL:</b>
 			  <a href="<%= @release.source_url %>" target="_blank"><%= @release.source_url %></a>
 			</p>
@@ -29,9 +24,17 @@
 				<a href="/releases/<%= @release.id %>/version/<%= version.version_number %>/download" target="_blank"><u><%= version.version_number %></u></a>
 			  <% end %>
 			</p>
+			
+			<br />
+			
+			<p>
+			  <h2>Description:</h2>
+			  <div style="padding-left:20px; padding-top:5px"><%= @release.description %></div>
+			</p>
 
 			<%# New Version Modal %>
 			<% if user_signed_in? && current_user.id == @release.user.id %>
+				<br /><br /><br />
 				<a class="btn" data-toggle="modal" href="#newVersionModal" >New Version</a>
 	
 				<div class="modal hide" id="newVersionModal">
@@ -62,10 +65,11 @@
 		
 		<div class="span4">
 			<div class="hero-unit">
+				<h2>Comments</h2>
 			<%# New Comment Modal %>
 			<% if user_signed_in? %>
 				<a class="btn" data-toggle="modal" href="#newCommentModal" >New Comment</a>
-	
+				<br />
 				<div class="modal hide" id="newCommentModal">
 				  <div class="modal-header">
 				    <button type="button" class="close" data-dismiss="modal">×</button>

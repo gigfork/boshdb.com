@@ -13,11 +13,7 @@
 	<% @releases.each do |release| %>
 	  <tr>
 	    <td><%= link_to release.name, release %></td>
-	    <td><%= if release.votes > 0 
-					release.score.to_f / release.votes.to_f
-				else 
-					0 
-				end %>
+	    <td><%= release.rating %>
 		<td><%= release.versions.last.downloads %>
 		<td><%= release.user.username if release.user %></td>
 		<td><a class="btn btn-primary" style="color:white;" href="/releases/<%= release.id %>/version/<%= release.versions.last.version_number %>/download">v<%= release.versions.last.version_number %> - Download</a></td>
