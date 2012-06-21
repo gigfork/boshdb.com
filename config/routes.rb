@@ -6,7 +6,9 @@ Boshdb::Application.routes.draw do
   # Versions routes
   match "/versions" => "versions#create", :via => "post"
   
+  # Releases routes
   match '/releases/:release_id/version/:version_number/download' => 'versions#download', :via => "get"
+  match "/userreleases/:username" => "releases#user", :via => "get"
   
   resources :releases
 

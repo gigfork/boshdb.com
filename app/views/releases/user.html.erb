@@ -1,5 +1,5 @@
 <div class="hero-unit">
-	<h2>BOSH Release Index</h2>
+	<h2><%= "#{@user.username}'s Releases"%></h2>
 	<br />
 	<table class="table table-bordered table-striped">
 	  <tr>
@@ -20,11 +20,5 @@
 	  </tr>
 	<% end %>
 	</table>
-
-	<br />
-
-	<% if user_signed_in? %>
-		<%= link_to 'New Release', new_release_path, :class => "btn" %>
-	<% end %>
 </div>
 

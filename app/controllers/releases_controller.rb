@@ -1,6 +1,6 @@
 class ReleasesController < ApplicationController
   
-  before_filter :authenticate_user!, :except => [:show, :index, :download]
+  before_filter :authenticate_user!, :except => [:show, :index, :download, :user]
   
   # GET /releases
   # GET /releases.json
@@ -108,5 +108,16 @@ class ReleasesController < ApplicationController
         format.json { head :no_content }
       end
     end    
+  end
+  
+  def user
+    username = params[:username]    
+    @user = User.find_by_username(username)
+    @releases = @user.releases
+    
+    respond_to do |format|
+      format.html # user.html.erb
+      format.json { render json: @releases }
+    end
   end
 end
