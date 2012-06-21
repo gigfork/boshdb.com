@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120620000112) do
+ActiveRecord::Schema.define(:version => 20120621031408) do
 
   create_table "comments", :force => true do |t|
     t.integer  "release_id"
@@ -21,16 +21,28 @@ ActiveRecord::Schema.define(:version => 20120620000112) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "pages", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "ratings", :force => true do |t|
+    t.integer  "release_id"
+    t.integer  "user_id"
+    t.integer  "rating"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "releases", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.string   "source_url"
     t.integer  "user_id"
-    t.integer  "score",       :default => 0
-    t.integer  "votes",       :default => 0
+    t.float    "rating",      :default => 0.0
     t.integer  "downloads",   :default => 0
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "users", :force => true do |t|

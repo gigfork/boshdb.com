@@ -5,8 +5,7 @@ class CreateReleases < ActiveRecord::Migration
       t.text :description
       t.string :source_url
       t.integer :user_id
-      t.integer :score, :default => 0
-      t.integer :votes, :default => 0
+      t.float :rating, :default => 0.0
       t.integer :downloads, :default => 0
 
       t.timestamps
