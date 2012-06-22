@@ -27,11 +27,11 @@
 			
 			<p>
 				<b>Rating:  </b>
-				<span class="star_1 rating"><img src="<%=asset_path "star-empty.png"%>" style="height:20px; width:20px"/></span>  
-				<span class="star_2 rating"><img src="<%=asset_path "star-empty.png"%>" style="height:20px; width:20px"/></span> 
-				<span class="star_3 rating"><img src="<%=asset_path "star-empty.png"%>" style="height:20px; width:20px"/></span> 
-				<span class="star_4 rating"><img src="<%=asset_path "star-empty.png"%>" style="height:20px; width:20px"/></span> 
-				<span class="star_5 rating"><img src="<%=asset_path "star-empty.png"%>" style="height:20px; width:20px"/></span>  
+				<span id="star_1" class="star_1 rating"><img src="<%=asset_path "star-empty.png"%>" style="height:20px; width:20px"/></span>  
+				<span id="star_2" class="star_2 rating"><img src="<%=asset_path "star-empty.png"%>" style="height:20px; width:20px"/></span> 
+				<span id="star_3" class="star_3 rating"><img src="<%=asset_path "star-empty.png"%>" style="height:20px; width:20px"/></span> 
+				<span id="star_4" class="star_4 rating"><img src="<%=asset_path "star-empty.png"%>" style="height:20px; width:20px"/></span> 
+				<span id="star_5" class="star_5 rating"><img src="<%=asset_path "star-empty.png"%>" style="height:20px; width:20px"/></span>  
 			</p>
 			
 			<br />
@@ -119,4 +119,44 @@
     e.preventDefault();
     $('#comments_form').submit();
   });
+
+  $('#star_1').hover(function(){
+		$('#star_1').html("<img src=\"<%=asset_path "star.png"%>\" style=\"height:20px; width:20px\"/>");
+		$('#star_2').html("<img src=\"<%=asset_path "star-empty.png"%>\" style=\"height:20px; width:20px\"/>");
+		$('#star_3').html("<img src=\"<%=asset_path "star-empty.png"%>\" style=\"height:20px; width:20px\"/>");
+		$('#star_4').html("<img src=\"<%=asset_path "star-empty.png"%>\" style=\"height:20px; width:20px\"/>");
+		$('#star_5').html("<img src=\"<%=asset_path "star-empty.png"%>\" style=\"height:20px; width:20px\"/>");
+	});
+	
+	$('#star_2').hover(function(){
+			$('#star_1').html("<img src=\"<%=asset_path "star.png"%>\" style=\"height:20px; width:20px\"/>");
+			$('#star_2').html("<img src=\"<%=asset_path "star.png"%>\" style=\"height:20px; width:20px\"/>");
+			$('#star_3').html("<img src=\"<%=asset_path "star-empty.png"%>\" style=\"height:20px; width:20px\"/>");
+			$('#star_4').html("<img src=\"<%=asset_path "star-empty.png"%>\" style=\"height:20px; width:20px\"/>");
+			$('#star_5').html("<img src=\"<%=asset_path "star-empty.png"%>\" style=\"height:20px; width:20px\"/>");
+		});
+		
+		$('#star_3').hover(function(){
+				$('#star_1').html("<img src=\"<%=asset_path "star.png"%>\" style=\"height:20px; width:20px\"/>");
+				$('#star_2').html("<img src=\"<%=asset_path "star.png"%>\" style=\"height:20px; width:20px\"/>");
+				$('#star_3').html("<img src=\"<%=asset_path "star.png"%>\" style=\"height:20px; width:20px\"/>");
+				$('#star_4').html("<img src=\"<%=asset_path "star-empty.png"%>\" style=\"height:20px; width:20px\"/>");
+				$('#star_5').html("<img src=\"<%=asset_path "star-empty.png"%>\" style=\"height:20px; width:20px\"/>");
+			});
+			
+		$('#star_4').hover(function(){
+				$('#star_1').html("<img src=\"<%=asset_path "star.png"%>\" style=\"height:20px; width:20px\"/>");
+				$('#star_2').html("<img src=\"<%=asset_path "star.png"%>\" style=\"height:20px; width:20px\"/>");
+				$('#star_3').html("<img src=\"<%=asset_path "star.png"%>\" style=\"height:20px; width:20px\"/>");
+				$('#star_4').html("<img src=\"<%=asset_path "star.png"%>\" style=\"height:20px; width:20px\"/>");
+				$('#star_5').html("<img src=\"<%=asset_path "star-empty.png"%>\" style=\"height:20px; width:20px\"/>");
+			});
+			
+		$('#star_5').hover(function(){
+				$('#star_1').html("<img src=\"<%=asset_path "star.png"%>\" style=\"height:20px; width:20px\"/>");
+				$('#star_2').html("<img src=\"<%=asset_path "star.png"%>\" style=\"height:20px; width:20px\"/>");
+				$('#star_3').html("<img src=\"<%=asset_path "star.png"%>\" style=\"height:20px; width:20px\"/>");
+				$('#star_4').html("<img src=\"<%=asset_path "star.png"%>\" style=\"height:20px; width:20px\"/>");
+				$('#star_5').html("<img src=\"<%=asset_path "star.png"%>\" style=\"height:20px; width:20px\"/>");
+			});
 </script>
