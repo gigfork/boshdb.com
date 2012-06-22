@@ -9,11 +9,14 @@ Boshdb::Application.routes.draw do
   # Releases routes
   match '/releases/:release_id/version/:version_number/download' => 'versions#download', :via => "get"
   match "/userreleases/:username" => "releases#user", :via => "get"
-  
   resources :releases
 
+  # Comments routes
   match "/comments" => "comments#create", :via => "post"
 
+  # Rating routes
+  match "/rate/:release/:rating" => "ratings#rate", :via => "get"
+  
   devise_for :users
   
   root :to => "pages#index"

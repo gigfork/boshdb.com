@@ -4,4 +4,5 @@ class Release < ActiveRecord::Base
   belongs_to :user
   has_many :versions
   has_many :comments
+  has_many :ratings
 end
