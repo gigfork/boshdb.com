@@ -3,4 +3,7 @@ background.png: background-169212d2e1a9ee474e023c580c9947fa.png
 rails.png: rails-be8732dac73d845ac5b142c8fb5f9fb0.png
 glyphicons-halflings-white.png: glyphicons-halflings-white-13553a5bf21ae3cc374006592488ec64.png
 glyphicons-halflings.png: glyphicons-halflings-f6675c325532ec11a984d58e172b8e2a.png
+star-empty.png: star-empty-0f22c75900a836086be5f6b49d1ff330.png
+star-half.png: star-half-0d054115f55a88eba2f35717540c0fb1.png
+star.png: star-3f5ad842265e65f91d8e38384c6bd5f3.png
 application.js: application-da604cc2e1a6c4ea76187a7673ea9907.js
