@@ -2,7 +2,7 @@ Boshdb::Application.routes.draw do
   
   # Static Pages
   match "/release-tutorial" => "pages#release_tutorial", :via => "get"
-  
+  match "/deploy-a-release" => "pages#deploy_a_release", :via => "get"
   # Versions routes
   match "/versions" => "versions#create", :via => "post"
   
