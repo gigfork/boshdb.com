@@ -17,6 +17,10 @@ class ReleasesController < ApplicationController
   # GET /releases/1.json
   def show
     @release = Release.find(params[:id])
+    @total_downloads = 0
+    @release.versions.each do |v|
+      @total_downloads += v.downloads
+    end
 
     respond_to do |format|
       format.html # show.html.erb

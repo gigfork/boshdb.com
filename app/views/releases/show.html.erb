@@ -35,6 +35,14 @@
 				<img id="star_5" src="<%=asset_path "star-empty.png"%>" style="height:20px; width:20px"/>
 			</p>
 			
+			<p>
+				<b>Version <%= @release.versions.last.version_number %> Downloads: </b>
+				<%= @release.versions.last.downloads %>
+			</p>
+			
+			<p>
+				<b>Total Downloads: </b>
+				<%= @total_downloads %>
 			<br />
 			
 			<p>
