@@ -1,4 +1,6 @@
 class VersionsController < ApplicationController
+
+  before_filter :authenticate_user!, :except => [:download]
   
   def download
     release_id = params[:release_id]
