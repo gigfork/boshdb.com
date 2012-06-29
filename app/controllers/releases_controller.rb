@@ -94,7 +94,7 @@ class ReleasesController < ApplicationController
     end
 
     respond_to do |format|
-      if @release.update_attributes(params[:release])
+      if @release.update_attributes(:description => params[:release][:description])
         format.html { redirect_to @release, notice: 'Release was successfully updated.' }
         format.json { head :no_content }
       else
