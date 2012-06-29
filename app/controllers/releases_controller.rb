@@ -38,6 +38,13 @@ class ReleasesController < ApplicationController
   # GET /releases/1/edit
   def edit
     @release = Release.find(params[:id])
+    
+    if current_user.id != @release.user.id
+      respond_to do |format|
+        format.html { redirect_to @release, notice: "You do not have permission to edit this release" }
+        format.json { head :no_content }
+      end
+    end
   end
 
   # POST /releases
@@ -78,6 +85,13 @@ class ReleasesController < ApplicationController
   # PUT /releases/1.json
   def update
     @release = Release.find(params[:id])
+    
+    if current_user.id != @release.user.id
+      respond_to do |format|
+        format.html { redirect_to @release, notice: "You do not have permission to edit this release" }
+        format.json { head :no_content }
+      end
+    end
 
     respond_to do |format|
       if @release.update_attributes(params[:release])
