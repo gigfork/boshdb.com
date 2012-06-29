@@ -1,5 +1,7 @@
 class RatingsController < ApplicationController
   
+  before_filter :authenticate_user!
+  
   def rate
     release_id = params[:release].to_f
     rating_val = params[:rating].to_f
