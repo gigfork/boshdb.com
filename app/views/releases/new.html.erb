@@ -1,3 +1,9 @@
+<% if flash[:alert] %>
+  <p class="flash-error alert alert-error"><%= flash[:alert] %></p>
+<% end %>
+<% if flash[:notice] %>
+  <p class="flash-notice alert alert-success"><%= flash[:notice] %></p>
+<% end %>
 <div class="hero-unit">
 	<h2>Create a New Release</h2>
 

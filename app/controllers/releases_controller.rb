@@ -59,28 +59,43 @@ class ReleasesController < ApplicationController
     version = params[:release][:version]
     release.delete("version")
     
-    # Add http:// prefix to source_url if it doesn't already exist
-    release[:source_url] = "http://#{release[:source_url]}" if not  release[:source_url].starts_with? "http://" and not release[:source_url].starts_with? "https://"
+    # Validate input
+    if (release[:name] == "")
+      flash[:notice] = "You must supply a name for the release"
+      respond_to do |format|
+        format.html { redirect_to :action => 'new' }
+        format.json { head :no_content }
+      end
+    elsif (release[:source_url] == "" || version[:download_url] == "")
+      flash[:notice] = "You must supply both a source and download URL"
+      respond_to do |format|
+        format.html { redirect_to :action => 'new' }
+        format.json { head :no_content }
+      end
+    else
+      # Add http:// prefix to source_url if it doesn't already exist
+      release[:source_url] = "http://#{release[:source_url]}" if not  release[:source_url].starts_with? "http://" and not release[:source_url].starts_with? "https://"
     
-    @release = Release.new(release)
-    @release.user = current_user
+      @release = Release.new(release)
+      @release.user = current_user
     
-    # Add the version info
-    # If the URL doesn't start with http:// or https://, add it
-    version[:download_url] = "http://#{version[:download_url]}" if not  version[:download_url].starts_with? "http://" and not version[:download_url].starts_with? "https://"
+      # Add the version info
+      # If the URL doesn't start with http:// or https://, add it
+      version[:download_url] = "http://#{version[:download_url]}" if not  version[:download_url].starts_with? "http://" and not version[:download_url].starts_with? "https://"
     
-    @version = Version.new(version)
-    @version.version_number = 1
-    @version.release = @release
-    @release.versions << @version
+      @version = Version.new(version)
+      @version.version_number = 1
+      @version.release = @release
+      @release.versions << @version
 
-    respond_to do |format|
-      if @release.save
-        format.html { redirect_to @release, notice: 'Release was successfully created.' }
-        format.json { render json: @release, status: :created, location: @release }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @release.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @release.save
+          format.html { redirect_to @release, notice: 'Release was successfully created.' }
+          format.json { render json: @release, status: :created, location: @release }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @release.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
