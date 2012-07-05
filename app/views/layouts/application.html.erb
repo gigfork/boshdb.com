@@ -38,6 +38,10 @@
 		  	  <% end %>
 			</ul>
 			<ul class="nav pull-right">
+				<form class="navbar-search pull-left" action="/search" method="get">
+				  <input type="text" class="search-query" id="q" name="q" placeholder="Search">
+				</form>
+				<li class="divider-vertical"></li>
 				<% if user_signed_in? %>
 					<li><a href="/userreleases/<%= current_user.username %>"><%= current_user.username %></a></li>
 					<li><a href="/users/sign_out">Sign Out</a></li>
