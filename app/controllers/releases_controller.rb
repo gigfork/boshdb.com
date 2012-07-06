@@ -146,7 +146,12 @@ class ReleasesController < ApplicationController
   def user
     username = params[:username]    
     @user = User.find_by_username(username)
-    @releases = @user.releases
+    
+    if @user == nil
+      @releases = []
+    else    
+      @releases = @user.releases
+    end
     
     respond_to do |format|
       format.html # user.html.erb

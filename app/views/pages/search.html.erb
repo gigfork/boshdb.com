@@ -15,7 +15,7 @@
 	    <td><%= link_to release.name, release %></td>
 	    <td><%= release.rating %>
 		<td><%= release.versions.last.downloads %>
-		<td><a href="/userreleases/<%= release.user.username %>"><%= release.user.username %></a></td>
+		<td><a href="/releases/user/<%= release.user.username %>"><%= release.user.username %></a></td>
 		<td><a class="btn btn-primary" style="color:white;" href="/releases/<%= release.id %>/version/<%= release.versions.last.version_number %>/download">v<%= release.versions.last.version_number %> - Download</a></td>
 	  </tr>
 	<% end %>

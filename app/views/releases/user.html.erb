@@ -1,21 +1,23 @@
 <div class="hero-unit">
-	<h2><%= "#{@user.username}'s Releases"%></h2>
+	<h2><% if @user != nil %><%= "#{@user.username}'s Releases"%><% else %><%= "No Releases Found "%><% end %></h2>
 	<br />
-	<table class="table table-bordered table-striped">
-	  <tr>
-	    <th>Name</th>
-		<th>Rating</th>
-		<th>Downloads
-	    <th>User</th>
-		<th>Latest Version</th>
-	  </tr>
+	<% if @user != nil %>
+		<table class="table table-bordered table-striped">
+		  <tr>
+		    <th>Name</th>
+			<th>Rating</th>
+			<th>Downloads
+		    <th>User</th>
+			<th>Latest Version</th>
+		  </tr>
+	<% end %>
 
 	<% @releases.each do |release| %>
 	  <tr>
 	    <td><%= link_to release.name, release %></td>
 	    <td><%= release.rating %>
 		<td><%= release.versions.last.downloads %>
-		<td><a href="/userreleases/<%= release.user.username %>"><%= release.user.username %></a></td>
+		<td><a href="/releases/user/<%= release.user.username %>"><%= release.user.username %></a></td>
 		<td><a class="btn btn-primary" style="color:white;" href="/releases/<%= release.id %>/version/<%= release.versions.last.version_number %>/download">v<%= release.versions.last.version_number %> - Download</a></td>
 	  </tr>
 	<% end %>
