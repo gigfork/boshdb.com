@@ -43,7 +43,7 @@
 				</form>
 				<li class="divider-vertical"></li>
 				<% if user_signed_in? %>
-					<li><a href="/userreleases/<%= current_user.username %>"><%= current_user.username %></a></li>
+					<li><a href="/releases/user/<%= current_user.username %>"><%= current_user.username %></a></li>
 					<li><a href="/users/sign_out">Sign Out</a></li>
 				<% else %>
 					<li><a href="/users/sign_in">Sign In</a></li>
