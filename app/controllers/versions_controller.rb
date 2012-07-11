@@ -48,6 +48,10 @@ class VersionsController < ApplicationController
       redirect_to download_url
     else
       # No valid download URL could be determined, throw and error and redirect
+      respond_to do |format|
+        format.html { redirect_to @version.release, notice: "There was an error downloading the selected release" }
+        format.json { head :no_content }
+      end
     end
   end
   
