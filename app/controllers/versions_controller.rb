@@ -1,5 +1,3 @@
-require 'URI'
-
 class VersionsController < ApplicationController
 
   before_filter :authenticate_user!, :except => [:download]
