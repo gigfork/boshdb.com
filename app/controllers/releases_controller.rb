@@ -66,8 +66,8 @@ class ReleasesController < ApplicationController
         format.html { redirect_to :action => 'new' }
         format.json { head :no_content }
       end
-    elsif (release[:source_url] == "" || version[:download_url] == "")
-      flash[:notice] = "You must supply both a source and download URL"
+    elsif (release[:source_url] == "")
+      flash[:notice] = "You must supply a source URL"
       respond_to do |format|
         format.html { redirect_to :action => 'new' }
         format.json { head :no_content }
