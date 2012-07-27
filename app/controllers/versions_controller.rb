@@ -6,6 +6,7 @@ class VersionsController < ApplicationController
     release_id = params[:release_id]
     version_number = params[:version_number]
     
+    @release = Release.find release_id
     @version = Version.where('version_number = ? AND release_id = ?', version_number, release_id).first
     
     # Test to make sure that the download URL is valid
@@ -40,6 +41,8 @@ class VersionsController < ApplicationController
     if valid_url
       # We found a valid download URL
       # Increase the download count
+      @release.downloads += 1
+      @release.save
       @version.downloads += 1
       @version.save
     
