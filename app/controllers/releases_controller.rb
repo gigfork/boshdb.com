@@ -9,7 +9,7 @@ class ReleasesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @releases }
+      format.json { render json: @releases.to_json(:except => [:user_id]) }
     end
   end
 
