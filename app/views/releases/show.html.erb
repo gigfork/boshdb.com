@@ -79,9 +79,13 @@
 				</div>
 			<% end %>
 			
+			<span style="float:right;">
 			<% if user_signed_in? && current_user.id == @release.user.id %>
 				<%= link_to "Edit Release", edit_release_path(@release), :class => "btn btn-primary", :style=>"color:white;" %>
+				<%= link_to 'Destroy', @release, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :style=>"color:white;" %>
 			<% end %>
+			</span>
+			
 		</div>
 		</div>
 		
